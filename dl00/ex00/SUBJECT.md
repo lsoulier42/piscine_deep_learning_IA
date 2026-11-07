@@ -1,34 +1,38 @@
-# dl00 / ex00 — Manipuler des tenseurs NumPy
+# dl00 / ex00 — Broadcasting
 
 | Champ | Valeur |
 | --- | --- |
-| Langage | Python 3.11+ |
-| Livrable | `solution.py` et `test_solution.py` |
-| Dépendances | NumPy (Pandas/Matplotlib si pertinent) |
-
-## Contexte
-Broadcasting, dérivées, gradients numériques et graphe de calcul.
+| Livrable | `solution.py` ou fichiers explicitement indiqués |
+| Tests | `test_solution.py` |
+| Python | 3.11+ |
+| Outils | NumPy ; PyTorch à partir de dl02 |
 
 ## Objectif
-Manipuler des tenseurs NumPy. Concevoir une implémentation claire et vérifiable qui illustre le mécanisme étudié.
+`broadcast_add(x: np.ndarray, bias: np.ndarray) -> np.ndarray`
 
-## Travail demandé
-1. Identifier les entrées, sorties et hypothèses ; les documenter dans le code.
-2. Implémenter la fonctionnalité annoncée sans copier une solution existante.
-3. Préparer au moins trois tests : nominal, limite et erreur ou cas dégénéré.
-4. Sur des données synthétiques reproductibles, observer le résultat et l'expliquer en quelques lignes dans `NOTES.md`.
+Additionne un vecteur biais à chaque ligne d'une matrice sans boucle Python.
+
+## Exemple
+Matrice 2x3 + vecteur 3 → matrice 2x3.
 
 ## Contraintes
-- Fixer la graine aléatoire lorsque le résultat dépend du hasard.
-- Ne pas modifier les données d'entrée sans le documenter.
-- Éviter les bibliothèques de haut niveau qui résolvent directement le problème, sauf lorsque l'exercice demande explicitement une comparaison.
-- Ne pas évaluer un modèle sur ses seules données d'entraînement.
+- Respecter le contrat et documenter les formes des tenseurs.
+- Vérifier dimensions et valeurs invalides ; lever `ValueError` quand applicable.
+- Pas de mutation silencieuse des arguments.
+- Fixer les seeds NumPy/PyTorch pour les expériences et documenter les écarts possibles selon plateforme.
+- Éviter les appels de bibliothèque réalisant directement le mécanisme à implémenter, sauf demande explicite.
+- Séparer train et validation et ne pas sélectionner un modèle sur le jeu de test.
+- Préférer des expériences exécutables sur CPU, petits batchs et données réduites.
 
-## Bonus facultatif
-Comparer deux jeux de paramètres ou deux cas limites et expliquer les différences.
+## À rendre
+1. Code fonctionnel et lisible, sans solution préremplie.
+2. Trois tests minimum : nominal, cas limite, erreur ou dimension invalide.
+3. `NOTES.md` expliquant l'intuition mathématique, les formes et une observation mesurée.
+
+## Bonus
+Étudier l'effet d'un hyperparamètre, comparer une implémentation de référence, ou profiler la mémoire.
 
 ## Autoévaluation
-- [ ] Le comportement est correct et testé.
-- [ ] Je peux expliquer les choix mathématiques.
-- [ ] L'expérience est reproductible.
-- [ ] Je sais identifier les limites de mon approche.
+- [ ] Je peux expliquer les étapes du calcul.
+- [ ] Tests et résultats reproductibles.
+- [ ] Je sais interpréter une limite du modèle.

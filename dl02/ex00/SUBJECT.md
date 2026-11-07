@@ -1,34 +1,38 @@
-# dl02 / ex00 — Créer un modèle nn.Module
+# dl02 / ex00 — Autograd
 
 | Champ | Valeur |
 | --- | --- |
-| Langage | Python 3.11+ |
-| Livrable | `solution.py` et `test_solution.py` |
-| Dépendances | NumPy ; PyTorch si le module le prévoit |
-
-## Contexte
-Autograd, nn.Module, DataLoader, optimizers et boucle d'entraînement.
+| Livrable | `solution.py` ou fichiers explicitement indiqués |
+| Tests | `test_solution.py` |
+| Python | 3.11+ |
+| Outils | NumPy ; PyTorch à partir de dl02 |
 
 ## Objectif
-Créer un modèle nn.Module. Concevoir une implémentation claire et vérifiable qui illustre le mécanisme étudié.
+`torch_gradients(x: torch.Tensor) -> torch.Tensor`
 
-## Travail demandé
-1. Identifier les entrées, sorties et hypothèses ; les documenter dans le code.
-2. Implémenter la fonctionnalité annoncée sans copier une solution existante.
-3. Préparer au moins trois tests : nominal, limite et erreur ou cas dégénéré.
-4. Sur des données synthétiques reproductibles, observer le résultat et l'expliquer en quelques lignes dans `NOTES.md`.
+Calculer gradient de sum(x²) via autograd et vérifier contre 2x.
+
+## Exemple
+x=[1,2] → [2,4].
 
 ## Contraintes
-- Fixer la graine aléatoire lorsque le résultat dépend du hasard.
-- Ne pas modifier les données d'entrée sans le documenter.
-- Éviter les bibliothèques de haut niveau qui résolvent directement le problème, sauf lorsque l'exercice demande explicitement une comparaison.
-- Ne pas évaluer un modèle sur ses seules données d'entraînement.
+- Respecter le contrat et documenter les formes des tenseurs.
+- Vérifier dimensions et valeurs invalides ; lever `ValueError` quand applicable.
+- Pas de mutation silencieuse des arguments.
+- Fixer les seeds NumPy/PyTorch pour les expériences et documenter les écarts possibles selon plateforme.
+- Éviter les appels de bibliothèque réalisant directement le mécanisme à implémenter, sauf demande explicite.
+- Séparer train et validation et ne pas sélectionner un modèle sur le jeu de test.
+- Préférer des expériences exécutables sur CPU, petits batchs et données réduites.
 
-## Bonus facultatif
-Comparer deux jeux de paramètres ou deux cas limites et expliquer les différences.
+## À rendre
+1. Code fonctionnel et lisible, sans solution préremplie.
+2. Trois tests minimum : nominal, cas limite, erreur ou dimension invalide.
+3. `NOTES.md` expliquant l'intuition mathématique, les formes et une observation mesurée.
+
+## Bonus
+Étudier l'effet d'un hyperparamètre, comparer une implémentation de référence, ou profiler la mémoire.
 
 ## Autoévaluation
-- [ ] Le comportement est correct et testé.
-- [ ] Je peux expliquer les choix mathématiques.
-- [ ] L'expérience est reproductible.
-- [ ] Je sais identifier les limites de mon approche.
+- [ ] Je peux expliquer les étapes du calcul.
+- [ ] Tests et résultats reproductibles.
+- [ ] Je sais interpréter une limite du modèle.
