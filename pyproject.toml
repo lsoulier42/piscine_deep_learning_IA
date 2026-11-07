@@ -1,0 +1,12 @@
+[project]
+name = "piscine-deep-learning-ia"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26"]
+
+[project.optional-dependencies]
+deep = ["torch>=2.2", "matplotlib>=3.8"]
+test = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
